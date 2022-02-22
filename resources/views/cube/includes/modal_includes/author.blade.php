@@ -22,8 +22,8 @@
         
         <div class="form-group mb-3">
             <label for="about">About Author</label>
-            <input type="text" name="about" id="about" class="about form-control">
-        </div>  
+            <textarea name="about" id="about" class="about form-control"></textarea>
+         </div>  
                    
       </div>
       <div class="modal-footer">
