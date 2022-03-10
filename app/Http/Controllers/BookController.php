@@ -35,11 +35,13 @@ class BookController extends Controller
         } 
     }
     public function postBook(Request $request){
+        $myrand=rand(10,1000000);
         $book=new books();
         $validateBook=Validator::make($request->all(),[
             'title'=>'required',
             'desc'=>'required',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'bookfile'=>'required|file|mimes:pdf,docs.xls,csv,docx|max:2048',
             'author'=>'required',
             'main_cat'=>'required',
             'sub_cat'=>'required'
@@ -47,14 +49,21 @@ class BookController extends Controller
         // $mybook= $request->book;
         $book->title=$request->title;
         $book->description=$request->desc;
-        // $book->image=$request->image;
+        $imageName=$request->image;
+        $mainFileName=$request->bookfile;
         $book->author_id=$request->author;
         $book->main_book_cat_id=$request->main_cat;
         $book->sub_book_cat_id=$request->sub_cat;
         
-         $filename = $request->file('image')->getClientOriginalName();
-         $path = $request->file('image')->store('/uploads/images/books/'.$filename);
-         $book->image = $filename;
+        //  $filename = $request->file('image')->getClientOriginalName();
+         $imageFileName=time() .rand(). '.' .$imageName->getClientOriginalExtension();
+
+         $path = $request->file('image')->store('/uploads/images/books/'.$imageFileName);
+         $book->image = $imageFileName;
+        //  getting and validationg the book file
+        $bookFileName=time() .rand(). '.' .$mainFileName->getClientOriginalExtension();
+        $path = $request->file('bookfile')->store('/uploads/images/bookfile/'.$bookFileName);
+         $book->bookfile = $bookFileName;
          
         if ($validateBook->fails()) {
             return Response::json(['success' => false, 'errors' => $validateBook->errors(),'status'=> 400, 'data' =>$book]);
@@ -65,7 +74,7 @@ class BookController extends Controller
         }
     }
     // update book
-    public function updateBook(Request $request ,$id){
+    public function updateMainCat(Request $request ,$id){
         $book=books::findorfail($id);
         $validateBook=Validator::make($request->all(),[
             'edit_title'=>'required',

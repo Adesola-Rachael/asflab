@@ -5,6 +5,7 @@
 <script src="../../pages_js_includes/dept_level.js"></script>
 <script src="../../pages_js_includes/book.js"></script>
 <script src="../../pages_js_includes/author.js"></script>
+<script src="../../pages_js_includes/bookCat.js"></script>
 
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables  & Plugins -->

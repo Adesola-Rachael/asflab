@@ -1,5 +1,6 @@
 @extends('cube.layouts.app')
 @section('title',$pageTitle)
+@section('pageName',$pageName)
 
   <!-- navbar  -->
   @section('top_nav')
@@ -18,7 +19,7 @@
 
         <div class="row">
          
-          <div class="col-6">
+          <div class="col-4">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">List Of Department</h3>
@@ -58,7 +59,7 @@
             <!-- /.card -->
           </div>
           <!--col for level and faculty  -->
-          <div class="col-6">
+          <div class="col-4">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">List Of faculty</h3>
@@ -94,7 +95,8 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
+          </div>
+          <div class="col-4">
             <!-- table for level -->
             <div class="card">
               <div class="card-header">
@@ -131,7 +133,9 @@
               </div>
               <!-- /.card-body -->
             </div>
+
           </div>
+          .
         </div>
          
       </div>

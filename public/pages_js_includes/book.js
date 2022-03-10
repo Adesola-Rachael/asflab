@@ -54,6 +54,8 @@ $(document).ready(function(){
         });
     });
 
+    // script for edit book
+
     $(document).on('click', '.edit_book', function(e){
       e.preventDefault();
         var book_id=$(this).val();
@@ -194,6 +196,33 @@ $(document).on('click', '.delete_book', function(e){
   });
    
 });
-      
     
+});
+
+// script  for view book
+$(document).on('click', '.view_book', function(e){
+  e.preventDefault();
+    var book_id=$(this).val();
+    console.log(book_id);
+  $('#ViewBookModal').modal('show');
+    $.ajax({
+    type: "GET",
+    url:"/getBookById/"+book_id,
+     dataType:"json",
+    success:function(response){
+       console.log(response);
+      // alert("edit_dept").val(response.data.dept);
+      $('#title').val(response.data.title);
+      $('#desc').val(response.data.description);
+      //  $('#edit_image').val(response.data.image);
+      $('#main_cat').val(response.data.main_book_cat_id);
+      $('#ub_cat').val(response.data.sub_book_cat_id);
+      $('#author').val(response.data.author_id);
+
+      // $('#edit_dept').val('bio');
+      // $('#edit_content').val(response.data.content);
+      $('#book_id').val(book_id);
+     
+    }  
+  });
 });

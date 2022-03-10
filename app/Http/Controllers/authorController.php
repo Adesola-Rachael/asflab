@@ -21,7 +21,7 @@ class authorController extends Controller
         $authors=Author::get();
         $main_book_cats=main_book_cat::get();
         $sub_book_cats=sub_book_cat::get();
-        $pageTitle='tmgr | All Books';
+        $pageTitle='tmgr | Author |book category';
         $pageName='All Books';
         return view('cube/manage_author',compact('pageName','pageTitle','main_book_cats','authors','sub_book_cats'));
          // $author=Author::all();
@@ -62,24 +62,24 @@ class authorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $author= new author();
-        $validateAuthor=Validator::make($request->all(),[
-        'name'=>'required',
-        'about'=>'required'
-        ]);
-        // $myauthor= $request->author;
-        $author->author=$request->author;
+    // public function store(Request $request)
+    // {
+    //     $author= new author();
+    //     $validateAuthor=Validator::make($request->all(),[
+    //     'name'=>'required',
+    //     'about'=>'required'
+    //     ]);
+    //     $author->name=$request->name;
+    //     $author->about=$request->about;
     
-        if ($validateAuthor->fails()) {
-            return Response::json(['success' => false, 'errors' => $validateAuthor->errors(),'status'=> 400, 'data' =>$author]);
-        }else{
-            $author->save();
-        return  Response::json(['success' => true, 'message' => 'Department created successfully!', 
-        'data' =>$author ,'status'=> 200]);
-        }
-    }
+    //     if ($validateAuthor->fails()) {
+    //         return Response::json(['success' => false, 'errors' => $validateAuthor->errors(),'status'=> 400, 'data' =>$author]);
+    //     }else{
+    //         $author->save();
+    //     return  Response::json(['success' => true, 'message' => 'Department created successfully!', 
+    //     'data' =>$author ,'status'=> 200]);
+    //     }
+    // }
 
     /**
      * Display the specified resource.
@@ -87,10 +87,18 @@ class authorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    
+    public function getAuthorId($id){
+        $author=Author::findorfail($id);
+            if (!$author) {
+            return Response::json(['success' => false, 'message' => 'Couldn`t fetch Data','status'=> 400, 'data' =>$author]);
+        }else{
+          
+        return  Response::json(['success' => true, 'message' => 'Author Fetched successfully!', 
+        'data' =>$author ,'status'=> 200]);
+        } 
     }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -110,10 +118,27 @@ class authorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    
+        // update author
+    public function updateAuthor(Request $request ,$id){
+        $author=Author::findorfail($id);
+        $validateAuthor=Validator::make($request->all(),[
+            'name' => 'required|unique:authors,name,'.$id,
+            'about'=>'required'
+        ]);
+        $author->name=$request->name;
+        $author->about=$request->about;
+    
+        if ($validateAuthor->fails()) {
+            return Response::json(['success' => false, 'errors' => $validateAuthor->errors(),'status'=> 400, 'data' =>$author]);
+        }else{
+            $author->save();
+        return  Response::json(['success' => true, 'message' => 'Author Updated successfully!', 
+        'data' =>$author ,'status'=> 200]);
+        }
+    } 
+    // update fac
+    
 
     /**
      * Remove the specified resource from storage.
@@ -121,8 +146,16 @@ class authorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function deleteAuthor($id)
     {
-        //
+        // delete Author
+        $author=author::findorfail($id);
+        if(!$author){
+            return Response::json(['success'=>false, 'message'=>'Author Does Not Exist','status'=> 400]);
+            }
+        if($author->delete()){
+            return  Response::json(['success' => true, 'message' => 'Author  Deleted  successfully!', 
+            'data' =>$author ,'status'=>200]);
+        }
     }
 }

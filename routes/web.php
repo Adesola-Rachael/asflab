@@ -6,6 +6,8 @@ use App\Http\Controllers\adminController;
 use App\Http\Controllers\DeptLevelController;
 use App\Http\Controllers\bookController;
 use App\Http\Controllers\authorController;
+use App\Http\Controllers\bookCatController;
+/*
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,6 +51,8 @@ Route::put('/updateDept/{id}',[DeptLevelController::class, 'updateDept']);;
 Route::put('/updateFac/{id}',[DeptLevelController::class, 'updateFac']);;
 Route::put('/updateLevel/{id}',[DeptLevelController::class, 'updateLevel']);;
 
+
+
 // Crude operation for book, categories and author
 // get all books, catefory and author 
 Route::get('/cube/manage_book',[bookController::class, 'getBook']);
@@ -56,21 +60,22 @@ Route::get('/cube/manage_author',[authorController::class, 'getAuthor']);
 // create new dept, level and faculty
 Route::post('/book',[bookController::class, 'postBook']);
 Route::post('/author',[authorController::class, 'createAuthor']);
-Route::post('/level',[DeptLevelController::class, 'postLevel']);
+Route::post('/main_cat',[bookCatController::class, 'Create_main_cat']);
 // Delete faculty, dept and level
 Route::get('/delete-book/{id}',[bookController::class, 'deleteBook']);
-Route::get('/delete-faculty/{id}',[DeptLevelController::class, 'deleteFac']);
-Route::get('/delete-level/{id}',[DeptLevelController::class, 'deleteLevel']);
+Route::get('/delete-author/{id}',[authorController::class, 'deleteAuthor']);
+Route::get('/delete-main_cat/{id}',[bookCatController::class, 'deleteMainCat']);
+
 
 // get dept, level and faculty by id
 Route::get('/getBookById/{id}',[bookController::class, 'getBookId']);
-Route::get('/getfacultyById/{id}',[DeptLevelController::class, 'getFacId']);
-Route::get('/getlevelById/{id}',[DeptLevelController::class, 'getLevelId']);
+Route::get('/getauthorById/{id}',[authorController::class, 'getAuthorId']);
+Route::get('/getMainCatById/{id}',[bookCatController::class, 'getMainCatId']);
 
 // update dept, fac and level
 Route::put('/updateBook/{id}',[BookController::class, 'updateBook']);;
-Route::put('/updateFac/{id}',[DeptLevelController::class, 'updateFac']);;
-Route::put('/updateLevel/{id}',[DeptLevelController::class, 'updateLevel']);;
+Route::put('/updateAuthor/{id}',[authorController::class, 'updateAuthor']);;
+Route::put('/update_main_cat/{id}',[bookCatController::class, 'updateMainCat']);;
 
 // 
 

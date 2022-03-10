@@ -11,4 +11,6 @@ class dept extends Model
     protected $fillable = [
         'dept'
     ];
+    
+    
 }

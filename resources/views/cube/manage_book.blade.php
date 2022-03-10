@@ -1,6 +1,6 @@
 @extends('cube.layouts.app')
 @section('title',$pageTitle)
-
+@section('pageName',$pageName)
   <!-- navbar  -->
   @section('top_nav')
     @include('cube.includes.top_nav')
@@ -22,6 +22,7 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">All Books</h3>
+                  
                 <h3 class="card-title  btn btn-primary " id="addBook" style="float:right">Add new e-Book</h3>
               </div>
               <div id="book_success_message"></div>
@@ -35,6 +36,7 @@
                       <th>Title</th>
                       <th>Description</th>
                       <th>Image</th>
+                      <th>Main Book File</th>
                        <th>Author</th>
                       <th>main Category</th>
                       <th>Sub Category</th>
@@ -48,13 +50,14 @@
                       <td>{{$book->title}}</td>
                       <td>{{$book->description}}</td>
                       <td>{{$book->image}}</td>
-                      <td>{{$book->author_id}}</td>
+                      <td>{{$book->bookfile}}</td>
+                      <td>{{$book->author->name}}</td>
                       <td>{{$book->main_book_cat_id}}</td>
                       <td>{{$book->sub_book_cat_id}}</td>
                       <td> 
-                        <button type="button" value="{{$book->id}}" class="btn btn-info btn-sm  view_book"><i class="fa fa-eye" title="view"></i></button>
+                        <button type="button" value="{{$book->id}}" class="btn btn-info btn-sm  view_book"><i class="fa fa-eye" title="View"></i></button>
                          <button type="button" value="{{$book->id}}" class="btn btn-info btn-sm  edit_book"><i class="fa fa-pen" title="Edit"></i></button>
-                         <button value="{{$book->id}}"  class="btn btn-danger btn-sm delete_book" title="delete"  ><i class="fa fa-trash fa-lg"></i></button>
+                         <button value="{{$book->id}}"  class="btn btn-danger btn-sm delete_book" title="Delete"  ><i class="fa fa-trash fa-lg"></i></button>
 
                         </td>
                 
@@ -143,6 +146,10 @@
  
 </div>
 <!-- ./wrapper -->
+
+
+
+
 
 @endsection
 

@@ -148,7 +148,7 @@
       </div>
       <div class="modal-body">
             <!-- <ul id="updateFrom_errlist"></ul> -->
-            <input type="text" id="delete_level_id">
+            <input type="hidden" id="delete_level_id">
             <h4> Are You Sure you Want To Delete This Level</h4> 
       </div>
       <div class="modal-footer">
