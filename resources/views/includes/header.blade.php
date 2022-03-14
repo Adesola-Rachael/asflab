@@ -1,37 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>ASFAAUA LIBRARY</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-	<!-- Fonts -->
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700' rel='stylesheet' type='text/css'>
+  <title>NewBiz Bootstrap Template - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-	<!-- Css -->
-	<link rel="stylesheet" href="{{ asset('css/nivo-slider.css') }}" type="text/css" />
-	<link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/owl.theme.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+  <!-- Favicons -->
+  <link href="myassets/img/favicon.png" rel="icon">
+  <link href="myassets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-	<!-- jS -->
-	<script src="{{ asset('js/jquery.min.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('js/jquery.nivo.slider.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('js/owl.carousel.min.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('js/jquery.nicescroll.js') }}"></script>
-	<script src="{{ asset('js/jquery.scrollUp.min.js') }}"></script>
-	<script src="{{ asset('js/main.js') }}" type="text/javascript"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
+  <!-- Vendor CSS Files -->
+  <link href="myassets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="myassets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="myassets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="myassets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="myassets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+  <!-- Template Main CSS File -->
+  <link href="myassets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NewBiz - v4.7.0
+  * Template URL: https://bootstrapmade.com/newbiz-bootstrap-business-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
-<style>
-	.catagotie-head img{
-		height:120px;
-	}
-</style>
-<body>

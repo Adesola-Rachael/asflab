@@ -22,7 +22,7 @@
                     <textarea  name="desc" id="desc" class="desc form-control" row='5'></textarea>
                 </div>
                 <div class="form-group mb-3">
-                    <label for="book">Book Image<small> (File must be jpg,jpeg,svg,gif)</small></label>
+                    <label for="book">Book Cover<small> (File must be jpg,jpeg,svg,gif)</small></label>
                     <input type="file" name="image" id="image" class="image form-control">
                 </div>
                 <div class="form-group mb-3">
@@ -34,6 +34,22 @@
                     <option selected="selected">Name of Author</option>
                     @foreach($authors as $author)
                     <option value="{{$author->id}}">{{$author->name}}</option>
+                    @endforeach
+                </select>
+                <!-- dept -->
+                <label for="dept">Dept</label>
+                <select class="form-control select2 dept" id ="dept" name="dept" style="width: 100%;">
+                    <option selected="selected">Department</option>
+                    @foreach($depts as $dept)
+                    <option value="{{$dept->id}}">{{$dept->dept}}</option>
+                    @endforeach
+                </select>
+                <!-- for level -->
+                <label for="level">Level</label>
+                <select class="form-control select2 level" id ="level" name="level" style="width: 100%;">
+                    <option selected="selected">Level</option>
+                    @foreach($levels as $level)
+                    <option value="{{$level->id}}">{{$level->level}}</option>
                     @endforeach
                 </select>
                 <!-- select main book cat -->
@@ -165,43 +181,9 @@
         
  
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="display">
             <!-- input title -->
-            <div class="row">
-              <div class="col-6">
-              <input type="text" id="book_id">
-                <div class="form-group mb-3">
-                    <label for="book">Book Title</label>
-                    <input type="text" value="ghhh" name="title" id="title" class="title form-control">
-                </div>  
-                <div class="form-group mb-3">
-                    <label for="book">Book Description</label>
-                    <p  name="desc"  id="desc" class="desc form-control" row='5'></p>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="book">Book Image<small> </small></label>
-                    <p name="image" id="image" class="image"></p>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="bookFile">Book File <small></small></label>
-                    <p name="bookfile" id="bookfile" class="bookfile"></p>
-                </div>
-                <label for="author">Author</label>
-                <p class="author" id ="author" name="author" ></p>
-                    
-                
-                <!--  main book cat -->
-                <label for="main cat">Main Category</label>
-                <p class=" main_cat" name="main_cat" id="main_cat"></p>
-                     
-                <!-- select sub book cat -->
-                <label for="">Sub category</label>
-                <p class="sub_cat" id="sub_cat" name="sub_cat"></p>
-              </div>
-              <div class="col-6">
-                <h5>Picture and file</h5>
-              </div>
-            </div>
+            
                
       </div>
        

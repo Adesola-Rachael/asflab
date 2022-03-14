@@ -7,6 +7,7 @@ use App\Http\Controllers\DeptLevelController;
 use App\Http\Controllers\bookController;
 use App\Http\Controllers\authorController;
 use App\Http\Controllers\bookCatController;
+use App\Http\Controllers\mainPageController;
 /*
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ use App\Http\Controllers\bookCatController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Route::get('/home',[mainPageController::class, 'home']);
 Route::get('/index',[viewBookController::class, 'allBooks']);
 Route::get('/index2',[viewBookController::class, 'allBooks2']);
 Route::get('/register',[UserController::class, 'register']);
@@ -61,22 +63,24 @@ Route::get('/cube/manage_author',[authorController::class, 'getAuthor']);
 Route::post('/book',[bookController::class, 'postBook']);
 Route::post('/author',[authorController::class, 'createAuthor']);
 Route::post('/main_cat',[bookCatController::class, 'Create_main_cat']);
+Route::post('/sub_cat',[bookCatController::class, 'Create_sub_cat']);
 // Delete faculty, dept and level
 Route::get('/delete-book/{id}',[bookController::class, 'deleteBook']);
 Route::get('/delete-author/{id}',[authorController::class, 'deleteAuthor']);
 Route::get('/delete-main_cat/{id}',[bookCatController::class, 'deleteMainCat']);
-
+Route::get('/delete-sub_cat/{id}',[bookCatController::class, 'deleteSubCat']);
 
 // get dept, level and faculty by id
 Route::get('/getBookById/{id}',[bookController::class, 'getBookId']);
 Route::get('/getauthorById/{id}',[authorController::class, 'getAuthorId']);
 Route::get('/getMainCatById/{id}',[bookCatController::class, 'getMainCatId']);
+Route::get('/getSubCatById/{id}',[bookCatController::class, 'getSubCatId']);
 
 // update dept, fac and level
 Route::put('/updateBook/{id}',[BookController::class, 'updateBook']);;
-Route::put('/updateAuthor/{id}',[authorController::class, 'updateAuthor']);;
-Route::put('/update_main_cat/{id}',[bookCatController::class, 'updateMainCat']);;
-
+Route::put('/updateAuthor/{id}',[authorController::class, 'updateAuthor']);
+Route::put('/update_main_cat/{id}',[bookCatController::class, 'updateMainCat']);
+Route::put('/update_sub_cat/{id}',[bookCatController::class, 'updateSubCat']);
 // 
 
 

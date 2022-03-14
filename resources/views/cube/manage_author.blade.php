@@ -99,6 +99,47 @@
               <!-- /.card-body -->
             </div>
           </div>
+            <!-- column for sub category table -->
+          <div class="col-3">
+            <!-- table for main_book_cat -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">All Sub Book Category</h3>
+                <h3 class="card-title  btn btn-primary" id="add_sub_book_cat" style="float:right">Add New Sub Book Cat</h3>
+              </div>                
+              <div id="sub_cat_success_message" ></div>
+
+              <!-- /.card-header -->
+              <div class="card-body p-0">
+                <table class="table table-striped table-responsive">
+                  <thead>
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>Sub Book Cat</th>
+                      <th>main_book_category</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach($sub_book_cats as  $sub_book_cat)
+                    <tr>
+                    <td>{{$loop->iteration}}</td>
+                      <td>{{$sub_book_cat->title}}</td>
+                      <td>{{$sub_book_cat->main_book_cat_id}}</td>
+                      <td> 
+                      <button value="{{$sub_book_cat->id}}" type="button" class="btn btn-info btn-sm edit_sub_book_cat"><i class="fa fa-pen" title="Edit"></i></button>
+                          <button value="{{$sub_book_cat->id}}"  class="btn btn-danger btn-sm delete_sub_book_cat" title="delete"  ><i class="fa fa-trash fa-lg"></i></button>
+                      </td>
+                
+                    </tr>
+                    @endforeach
+                        
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+          </div>
         </div>
          
       </div>

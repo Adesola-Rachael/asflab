@@ -72,6 +72,71 @@ class bookCatController extends Controller
             'data' =>$main_cat ,'status'=>200]);
         }
     }
-    // update fac
+    // for sub cat
+
+
+
+    public function Create_sub_cat(Request $request)
+    {
+        //ceate book main ccategory
+        $sub_cat= new sub_book_cat();
+
+        $validatesub_cat=Validator::make($request->all(),[
+        'title'=>'required|unique:sub_book_cats',
+        'main_cat'=>'required'
+        ]);
+        // $mymain_cat= $request->main_cat;
+        $sub_cat->title=$request->title;
+        $sub_cat->main_book_cat_id=$request->main_cat;
+    
+        if ($validatesub_cat->fails()) {
+            return Response::json(['success' => false, 'message' => $validatesub_cat->errors(),'status'=> 400, 'data' =>$sub_cat]);
+        }else{
+            $sub_cat->save();
+        return  Response::json(['success' => true, 'message' => 'Sub Category  created successfully!', 
+        'data' =>$sub_cat ,'status'=> 200]);
+        }
+
+        
+    }
+    public function getSubCatId($id){
+        $sub_cat=sub_book_cat::findorfail($id);
+            if (!$sub_cat) {
+            return Response::json(['success' => false, 'message' => 'Couldn`t fetch Data','status'=> 400, 'data' =>$main_cat]);
+        }else{
+          
+        return  Response::json(['success' => true, 'message' => 'Sub Category Fetched successfully!', 
+        'data' =>$sub_cat ,'status'=> 200]);
+        } 
+    }
+    public function updateSubCat(Request $request ,$id){
+        $sub_cat=sub_book_cat::findorfail($id);
+        $validatesub_cat=Validator::make($request->all(),[
+            'title' => 'required|unique:sub_book_cats,title,'.$id,
+              'main_cat'=>'required'
+        ]);
+        $sub_cat->title=$request->title;
+        $sub_cat->main_book_cat_id=$request->main_cat;
+    
+        if ($validatesub_cat->fails()) {
+            return Response::json(['success' => false, 'errors' => $validatesub_cat->errors(),'status'=> 400, 'data' =>$sub_cat]);
+        }else{
+            $sub_cat->save();
+        return  Response::json(['success' => true, 'message' => 'Sub Category Updated successfully!', 
+        'data' =>$sub_cat ,'status'=> 200]);
+        }
+    } 
+    public function deleteSubCat($id)
+    {
+        // delete main_cat
+        $sub_cat=sub_book_cat::findorfail($id);
+        if(!$sub_cat){
+            return Response::json(['success'=>false, 'message'=>'Sub Cat Does Not Exist','status'=> 400]);
+            }
+        if($sub_cat->delete()){
+            return  Response::json(['success' => true, 'message' => 'Sub category  Deleted  successfully!', 
+            'data' =>$sub_cat ,'status'=>200]);
+        }
+    }
     
 }

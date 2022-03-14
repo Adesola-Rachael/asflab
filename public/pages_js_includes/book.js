@@ -201,28 +201,118 @@ $(document).on('click', '.delete_book', function(e){
 
 // script  for view book
 $(document).on('click', '.view_book', function(e){
-  e.preventDefault();
-    var book_id=$(this).val();
-    console.log(book_id);
-  $('#ViewBookModal').modal('show');
-    $.ajax({
-    type: "GET",
-    url:"/getBookById/"+book_id,
-     dataType:"json",
-    success:function(response){
-       console.log(response);
-      // alert("edit_dept").val(response.data.dept);
-      $('#title').val(response.data.title);
-      $('#desc').val(response.data.description);
-      //  $('#edit_image').val(response.data.image);
-      $('#main_cat').val(response.data.main_book_cat_id);
-      $('#ub_cat').val(response.data.sub_book_cat_id);
-      $('#author').val(response.data.author_id);
+      e.preventDefault();
+        var book_id=$(this).val();
+        console.log(book_id);
+      $('#ViewBookModal').modal('show');
+        $.ajax({
+        type: "GET",
+        url:"/getBookById/"+book_id,
+         dataType:"json",
+        success:function(response){
+            
+           $('#display').append(
+              '<div class="row">'+
+                '<div class="col-6">'+
+                  '<input type="hidden" id="book_id">'+
+                  '<div class="show_content"> '+
+                    // show title
+                    '<div class="col-sm-12">'+
+                      '<div class="form-group mb-30"> '+                                 
+                        '<div class="form-group mb-30">'+
+                          '<label>Title:</label><span class="title">'+response.data.title+'</span>'+
+                        '</div>'+
+                      '</div>'+
+                    '</div>'+
+                    // show description
+                    '<div class="col-sm-12">'+
+                      '<div class="form-group mb-30"> '+                                 
+                        '<div class="form-group mb-30">'+
+                          '<label>Description:</label><span class="title">'+response.data.description+'</span>'+
+                        '</div>'+
+                      '</div>'+
+                    '</div>'+
+                    // show bookfile
+                    '<div class="col-sm-12">'+
+                      '<div class="form-group mb-30"> '+                                 
+                        '<div class="form-group mb-30">'+
+                          '<label>BookFile:</label><span class="title">'+response.data.bookfile+'</span>'+
+                        '</div>'+
+                      '</div>'+
+                    '</div>'+
+                    // show author
+                    '<div class="col-sm-12">'+
+                      '<div class="form-group mb-30"> '+                                 
+                        '<div class="form-group mb-30">'+
+                          '<label>Author:</label><span class="title">'+response.data.author+'</span>'+
+                        '</div>'+
+                      '</div>'+
+                    '</div>'+
+                    // show ssub book cat
+                    '<div class="col-sm-12">'+
+                      '<div class="form-group mb-30"> '+                                 
+                        '<div class="form-group mb-30">'+
+                          '<label>Description:</label><span class="title">'+response.data.main_book_cat_id+'</span>'+
+                        '</div>'+
+                      '</div>'+
+                    '</div>'+
+                    // show sub book cat
+                    '<div class="col-sm-12">'+
+                      '<div class="form-group mb-30"> '+                                 
+                        '<div class="form-group mb-30">'+
+                          '<label>Description:</label><span class="title">'+response.data.sub_book_cat_id+'</span>'+
+                        '</div>'+
+                      '</div>'+
+                    '</div>'+
 
-      // $('#edit_dept').val('bio');
-      // $('#edit_content').val(response.data.content);
-      $('#book_id').val(book_id);
-     
-    }  
-  });
+                  '</div>'+
+                '</div>'+
+                '<div class="col-6">'+
+                  '<h5>Picture and file</h5>'+
+                  '<img src="{{url(‘storage/app/public/uploads/images/books/’.${response.data.image})}}">'+
+                   '<img src="/uploads/images/books/${response.data.image}">'+
+                '</div>'+
+              '</div>'
+            );
+         
+
+
+         
+        }  
+      });
 });
+
+    
+
+
+
+
+
+
+// $(document).on('click', '.view_book', function(e){
+//   e.preventDefault();
+//     var book_id=$(this).val();
+//     console.log(book_id);
+//   $('#ViewBookModal').modal('show');
+//     $.ajax({
+//     type: "GET",
+//     url:"/getBookById/"+book_id,
+//      dataType:"json",
+//     success:function(response){
+//        console.log(response);
+//       // alert("edit_dept").val(response.data.dept);
+//       $('#title').val(response.data.title);
+//       $('#desc').val(response.data.description);
+//       //  $('#edit_image').val(response.data.image);
+//       $('#main_cat').val(response.data.main_book_cat_id);
+//       $('#ub_cat').val(response.data.sub_book_cat_id);
+//       $('#author').val(response.data.author_id);
+
+//       // $('#edit_dept').val('bio');
+//       // $('#edit_content').val(response.data.content);
+//       $('#book_id').val(book_id);
+     
+//     }  
+//   });
+// });
+

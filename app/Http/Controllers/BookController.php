@@ -8,6 +8,8 @@ use Illuminate\Http\File;
 use Validator,Response;
 use App\Models\Author;
 use App\Models\books;
+use App\Models\dept;
+use App\Models\level;
 use App\Models\main_book_cat;
 use App\Models\sub_book_cat;
 
@@ -17,11 +19,13 @@ class BookController extends Controller
     {
         $authors=Author::get();
         $books=books::get();
+        $depts=dept::get();
+        $levels=level::get();
         $main_book_cats=main_book_cat::get();
         $sub_book_cats=sub_book_cat::get();
         $pageTitle='tmgr | All Books';
         $pageName='All Books';
-        return view('cube/manage_book',compact('pageName','pageTitle','main_book_cats','books','authors','sub_book_cats'));
+        return view('cube/manage_book',compact('pageName','pageTitle','main_book_cats','books','depts','levels','authors','sub_book_cats'));
 
     }
     public function getBookId($id){
@@ -52,6 +56,8 @@ class BookController extends Controller
         $imageName=$request->image;
         $mainFileName=$request->bookfile;
         $book->author_id=$request->author;
+        $book->dept_id=$request->dept;
+        $book->level_id=$request->level;
         $book->main_book_cat_id=$request->main_cat;
         $book->sub_book_cat_id=$request->sub_cat;
         
