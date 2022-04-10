@@ -21,7 +21,7 @@ class authorController extends Controller
         $authors=Author::get();
         $main_book_cats=main_book_cat::get();
         $sub_book_cats=sub_book_cat::get();
-        $pageTitle='tmgr | Author |book category';
+        $pageTitle='Asfaaua | Author |book category';
         $pageName='All Books';
         return view('cube/manage_author',compact('pageName','pageTitle','main_book_cats','authors','sub_book_cats'));
          // $author=Author::all();

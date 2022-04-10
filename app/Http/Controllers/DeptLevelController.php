@@ -15,7 +15,7 @@ class DeptLevelController extends Controller
         $depts=dept::get();
         $levels=level::get();
         $faculty=faculty::get();
-        $pageTitle='tmgr | dept/Level';
+        $pageTitle='Asfaaua | dept/Level';
         $pageName='dept/level';
         // if($depts){
         //   return  Response::json(['success'=>true, 'dept'=>$depts, ]);
@@ -56,13 +56,13 @@ class DeptLevelController extends Controller
     public function postDept(Request $request){
         $dept= new dept();
         $validateDept=Validator::make($request->all(),[
-        'dept'=>'required'
+        'dept'=>'required|unique:depts',
         ]);
         // $mydept= $request->dept;
         $dept->dept=$request->dept;
     
         if ($validateDept->fails()) {
-            return Response::json(['success' => false, 'errors' => $validateDept->errors(),'status'=> 400, 'data' =>$dept]);
+            return Response::json(['success' => false, 'message' => $validateDept->errors(),'status'=> 400, 'data' =>$dept]);
         }else{
             $dept->save();
         return  Response::json(['success' => true, 'message' => 'Department created successfully!', 
@@ -74,7 +74,7 @@ class DeptLevelController extends Controller
     public function postFac(Request $request){
         $faculty= new faculty();
         $validateFac=Validator::make($request->all(),[
-        'faculty'=>'required'
+        'faculty'=>'required|unique:faculties'
         ]);
         // $mydept= $request->dept;
         $faculty->faculty=$request->faculty;
@@ -92,7 +92,7 @@ class DeptLevelController extends Controller
     public function postLevel(Request $request){
         $level= new level();
         $validateLevel=Validator::make($request->all(),[
-        'level'=>'required'
+        'level'=>'required|unique:levels'
         ]);
         // $mydept= $request->dept;
         $level->level=$request->level;
@@ -111,13 +111,13 @@ class DeptLevelController extends Controller
     public function updateDept(Request $request ,$id){
         $depts=dept::findorfail($id);
         $validateDept=Validator::make($request->all(),[
-            'dept'=>'required'
+            'dept'=>'required|unique:depts,dept,'.$id,
         ]);
         // $mydept= $request->dept;
         $depts->dept=$request->dept;
     
         if ($validateDept->fails()) {
-            return Response::json(['success' => false, 'errors' => $validateDept->errors(),'status'=> 400, 'data' =>$depts]);
+            return Response::json(['success' => false, 'message' => $validateDept->errors(),'status'=> 400, 'data' =>$depts]);
         }else{
             $depts->save();
         return  Response::json(['success' => true, 'message' => 'Department Updated successfully!', 
@@ -128,7 +128,7 @@ class DeptLevelController extends Controller
      public function updateFac(Request $request ,$id){
        $faculty=faculty::findorfail($id);
         $validateFac=Validator::make($request->all(),[
-            'faculty'=>'required'
+            'faculty'=>'required|unique:faculties,faculty,'.$id,
         ]);
         // $mydept= $request->dept;
         $faculty->faculty=$request->faculty;
@@ -145,7 +145,7 @@ class DeptLevelController extends Controller
     public function updateLevel(Request $request ,$id){
         $level=level::findorfail($id);
          $validateLevel=Validator::make($request->all(),[
-             'level'=>'required'
+             'level'=>'required|unique:levels,level,'.$id,
          ]);
          // $mydept= $request->dept;
          $level->level=$request->level;

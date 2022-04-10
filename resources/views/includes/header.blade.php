@@ -25,6 +25,7 @@
 
   <!-- Template Main CSS File -->
   <link href="myassets/css/style.css" rel="stylesheet">
+  <link href="myassets/css/index_book.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: NewBiz - v4.7.0

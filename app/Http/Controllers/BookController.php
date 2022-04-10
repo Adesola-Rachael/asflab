@@ -23,7 +23,7 @@ class BookController extends Controller
         $levels=level::get();
         $main_book_cats=main_book_cat::get();
         $sub_book_cats=sub_book_cat::get();
-        $pageTitle='tmgr | All Books';
+        $pageTitle='Asfaaua | All Books';
         $pageName='All Books';
         return view('cube/manage_book',compact('pageName','pageTitle','main_book_cats','books','depts','levels','authors','sub_book_cats'));
 
@@ -41,7 +41,7 @@ class BookController extends Controller
     public function postBook(Request $request){
         $myrand=rand(10,1000000);
         $book=new books();
-        $validateBook=Validator::make($request->all(),[
+        $validateBook=Validator::make($request->all(),[ 
             'title'=>'required',
             'desc'=>'required',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',

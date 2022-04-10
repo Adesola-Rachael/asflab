@@ -8,6 +8,9 @@ use App\Http\Controllers\bookController;
 use App\Http\Controllers\authorController;
 use App\Http\Controllers\bookCatController;
 use App\Http\Controllers\mainPageController;
+use App\Http\Controllers\quoteController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\GalleryController;
 /*
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +27,8 @@ use App\Http\Controllers\mainPageController;
 //     return view('welcome');
 // });
 Route::get('/home',[mainPageController::class, 'home']);
+Route::get('/book_categories',[mainPageController::class, 'book_categories']);
+Route::get('/bookstore',[mainPageController::class, 'bookstore']);
 Route::get('/index',[viewBookController::class, 'allBooks']);
 Route::get('/index2',[viewBookController::class, 'allBooks2']);
 Route::get('/register',[UserController::class, 'register']);
@@ -59,6 +64,7 @@ Route::put('/updateLevel/{id}',[DeptLevelController::class, 'updateLevel']);;
 // get all books, catefory and author 
 Route::get('/cube/manage_book',[bookController::class, 'getBook']);
 Route::get('/cube/manage_author',[authorController::class, 'getAuthor']);
+
 // create new dept, level and faculty
 Route::post('/book',[bookController::class, 'postBook']);
 Route::post('/author',[authorController::class, 'createAuthor']);
@@ -82,6 +88,29 @@ Route::put('/updateAuthor/{id}',[authorController::class, 'updateAuthor']);
 Route::put('/update_main_cat/{id}',[bookCatController::class, 'updateMainCat']);
 Route::put('/update_sub_cat/{id}',[bookCatController::class, 'updateSubCat']);
 // 
+
+
+// All route for quote
+Route::get('cube/manage_quote',[quoteController::class, 'getQuote']);
+Route::post('/quote',[quoteController::class, 'CreateQuote']);
+Route::get('/getQuoteById/{id}',[quoteController::class, 'getQuoteId']);
+Route::put('/updateQuote/{id}',[quoteController::class, 'updateQuote']);
+Route::get('/delete-quote/{id}',[quoteController::class, 'deleteQuote']);
+
+// All route for events
+Route::get('cube/manage_event',[EventController::class, 'getEvent']);
+// Route::post('/quote',[quoteController::class, 'CreateQuote']);
+Route::get('/getEventById/{id}',[EventController::class, 'getEventId']);
+Route::put('/updateEvent/{id}',[EventController::class, 'updateEvent']);
+// Route::get('/delete-quote/{id}',[quoteController::class, 'deleteQuote']);
+
+
+// gallery
+Route::get('cube/manage_gallery',[GalleryController::class, 'getGallery']);
+Route::post('/gallery',[GalleryController::class, 'CreateGallery']);
+Route::get('/getGalleryById/{id}',[GalleryController::class, 'getgalleryId']);
+Route::put('/updateGallery/{id}',[GalleryController::class, 'updateGallery']);
+
 
 
 

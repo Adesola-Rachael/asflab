@@ -85,11 +85,12 @@ $(document).ready(function(){
             );
             // window.location="dept_level";
           }else{
+            var message=JSON.stringify(response.message)
             console.log(response.message);
             $('#Fac_success_message').html(
             '<div class="alert alert-danger alert-dismissible">'+
               '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
-              '<h5><i class="icon fas fa-ban"></i>Error!</h5>' +response.message+
+              '<h5><i class="icon fas fa-ban"></i>Error!</h5>' +message+
             '</div>'
             );
 
@@ -391,12 +392,13 @@ $(document).on('click', '.update_dept', function(e){
             
             // window.location="dept_level";
 
-          }else{
+          }else if(response.status==400){
+            var message=JSON.stringify(response.message)
             console.log(response.message);
             $('#Dept_success_message').html(
             '<div class="alert alert-danger alert-dismissible">'+
               '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
-              '<h5><i class="icon fas fa-ban"></i>Error!</h5>' +response.message+
+              '<h5><i class="icon fas fa-ban"></i>Error!</h5>' +message+
             '</div>'
             );
 
